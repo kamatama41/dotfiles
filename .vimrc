@@ -2,6 +2,17 @@
 " 一般
 " viとの互換を取らない
 set nocompatible
+" vundleの設定
+"filetype off
+"set rtp+=~/.vim/vundle.git/
+"call vundle#rc()
+"Bundle "scrooloose/syntastic"
+
+"filetype plugin indent on
+
+"let g:syntastic_enable_signs=1
+"let g:systastic_auto_loc_list=2
+
 " コマンド、検索のパターンを50個まで残す
 set history=50
 
@@ -70,4 +81,3 @@ set cindent
 " ファイル関連
 " バックアップファイルを作成しない
 set nobackup
-
