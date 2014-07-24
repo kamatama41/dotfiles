@@ -1,3 +1,7 @@
+# office
+if [ -f $HOME/.zshrc_office ]; then
+  source $HOME/.zshrc_office
+fi
 # svn
 if [ -f /opt/subversion/bin/svn ]; then
   path=(/opt/subversion/bin $path)
