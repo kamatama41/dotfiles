@@ -28,6 +28,14 @@ fi
 export GOPATH=$HOME/go
 path=($GOPATH/bin(N-/) $(go env GOROOT)/bin(N-/) $path)
 
+# node.js
+if [ -s $HOME/.nvm/nvm.sh  ]; then
+  . $HOME/.nvm/nvm.sh
+  nvm use default
+  npm_dir=${NVM_PATH}_modules
+  export NODE_PATH=$npm_dir
+fi
+
 # mysql
 if [ -f /usr/local/mysql/bin/mysql ]; then
   path=(/usr/local/mysql/bin $path)
