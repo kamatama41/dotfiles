@@ -1,9 +1,17 @@
 #!/bin/sh 
 cd $(dirname $0)
-for dotfile in .?*
-do
-  if [ $dotfile != '..' ] && [ $dotfile != '.git' ] && [ $dotfile != '.gitmodules' ]
-  then
-    ln -Fis "$PWD/$dotfile" "$HOME"
-  fi
+for dotfile in .?*; do
+  case $dotfile in
+    ..)
+      continue;;
+    .git)
+      continue;;
+    .gitignore)
+      continue;;
+    .gitmodules)
+      continue;;
+    *)
+      ln -Fis "${PWD}/${dotfile}" $HOME
+      ;;
+  esac
 done
