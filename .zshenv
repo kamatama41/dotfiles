@@ -46,6 +46,11 @@ if [ -f $HOME/.nodebrew/current/bin/node ]; then
   path=($HOME/.nodebrew/current/bin $path)
 fi
 
+# javacc
+if [ -f $HOME/javacc/javacc-6.0/bin/lib/javacc.jar ]; then
+  path=($HOME/javacc/javacc-6.0/bin $path)
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 
