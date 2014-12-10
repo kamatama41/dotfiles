@@ -58,3 +58,8 @@ fi
 [[ -s "$HOME/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/google-cloud-sdk/path.zsh.inc"
 # The next line enables bash completion for gcloud.
 #[[ -s "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
+
+# gsutil 
+if [ -f $HOME/gsutil/gsutil ]; then
+  path=($HOME/gsutil $path)
+fi
