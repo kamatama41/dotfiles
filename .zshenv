@@ -6,9 +6,9 @@ if [ -f $HOME/.zshrc_office ]; then
 fi
 
 # svn
-if [ -f /opt/subversion/bin/svn ]; then
-  path=(/opt/subversion/bin $path)
-fi
+#if [ -f /opt/subversion/bin/svn ]; then
+#  path=(/opt/subversion/bin $path)
+#fi
 
 # maven
 if [ -f $HOME/maven2/current/bin/mvn ]; then
