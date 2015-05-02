@@ -1,8 +1,9 @@
 # git pull
+current=$PWD
 git_dir=$(dirname `readlink ~/.zshrc`)
 cd $git_dir
 git pull
-cd
+cd $current
 
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000000
