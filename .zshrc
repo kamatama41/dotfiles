@@ -8,8 +8,8 @@ cd $current
 # プロンプトの表示内容変更 
 #PROMPT="[%n@%m]
 #%# "
-# 右側にcurrent dirを出す
-RPROMPT="[%~]"
+# 右側に現在のディレクトリを出す
+RPROMPT="[%c]"
 
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000000
