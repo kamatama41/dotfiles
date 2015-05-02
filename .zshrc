@@ -1,9 +1,5 @@
-# git pull
-current=$PWD
-git_dir=$(dirname `readlink ~/.zshrc`)
-cd $git_dir
-git pull
-cd $current
+# alias
+alias tmux='tmux -2'
 
 # プロンプトの表示内容変更 
 #PROMPT="[%n@%m]
@@ -43,6 +39,17 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+
+# 設定のリフレッシュ
+function refresh-setting(){
+  # git pull
+  current=$PWD
+  git_dir=$(dirname `readlink ~/.zshrc`)
+  cd $git_dir
+  git pull
+  cd $current
+  source ~/.zshrc
+}
 
 # office設定(あれば)
 if [ -f $HOME/.zshrc_office ]; then
