@@ -1,3 +1,9 @@
+# git pull
+git_dir=$(dirname `readlink ~/.zshrc`)
+cd $git_dir
+git pull
+cd
+
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
