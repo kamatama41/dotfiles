@@ -5,6 +5,12 @@ cd $git_dir
 git pull
 cd $current
 
+# プロンプトの表示内容変更 
+#PROMPT="[%n@%m]
+#%# "
+# 右側にcurrent dirを出す
+RPROMPT="[%~]"
+
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
