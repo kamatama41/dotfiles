@@ -1,12 +1,6 @@
 # alias
 alias tmux='tmux -2'
 
-# プロンプトの表示内容変更 
-#PROMPT="[%n@%m]
-#%# "
-# 右側に現在のディレクトリを出す
-RPROMPT="[%c]"
-
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
@@ -22,7 +16,21 @@ compinit
 # sshと同じ補完をする
 compdef mosh=ssh
 
-# peco
+# vcs_infoを右プロンプトに
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%b)'
+zstyle ':vcs_info:*' actionformats '(%b|%a)'
+
+function _update_vcs_info_message() {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  psvar[1]="$vcs_info_msg_0_"
+}
+add-zsh-hook precmd _update_vcs_info_message
+RPROMPT="[%c]%v"
+
+## peco
 # ヒストリから検索する
 function peco-select-history() {
   local tac
@@ -40,6 +48,18 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+# tmuxのウインドウ切り替え
+function peco-tmux() {
+  local i=$(tmux lsw | awk '/active.$/ {print NR-1}')
+  local f='#{window_index}: #{window_name}#{window_flags} #{pane_current_path}'
+  tmux lsw -F "$f" \
+    | anyframe-selector-auto "" --initial-index $i \
+    | cut -d ':' -f 1 \
+    | anyframe-action-execute tmux select-window -t
+}
+zle -N peco-tmux
+bindkey '^[' peco-tmux
+
 # 設定のリフレッシュ
 function refresh-setting(){
   # git pull
@@ -54,4 +74,8 @@ function refresh-setting(){
 # office設定(あれば)
 if [ -f $HOME/.zshrc_office ]; then
   source $HOME/.zshrc_office
+fi
+# zgen設定(あれば)
+if [ -f $HOME/.zshrc.zgen ]; then
+  source $HOME/.zshrc.zgen
 fi

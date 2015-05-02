@@ -1,0 +1,8 @@
+# load saved zgen settin
+# install -> ghq get https://github.com/tarjoilija/zgen.git
+source $GOPATH/src/github.com/tarjoilija/zgen/zgen.zsh
+
+if ! zgen saved; then
+  zgen load mollifier/anyframe
+  zgen save
+fi
