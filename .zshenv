@@ -1,9 +1,5 @@
 export LANG=ja_JP.UTF-8
 
-# office設定(あれば)
-if [ -f $HOME/.zshrc_office ]; then
-  source $HOME/.zshrc_office
-fi
 
 # svn
 #if [ -f /opt/subversion/bin/svn ]; then

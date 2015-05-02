@@ -37,3 +37,7 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+# office設定(あれば)
+if [ -f $HOME/.zshrc_office ]; then
+  source $HOME/.zshrc_office
+fi
