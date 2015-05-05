@@ -1,5 +1,9 @@
 export LANG=ja_JP.UTF-8
 
+# リポジトリ上にある実行ファイル
+if [ -d $HOME/.bin ]; then
+  path=($HOME/.bin $path)
+fi
 
 # svn
 #if [ -f /opt/subversion/bin/svn ]; then
