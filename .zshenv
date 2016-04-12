@@ -1,4 +1,12 @@
 export LANG=ja_JP.UTF-8
+export EDITOR=vim
+
+# Java(default 1.7)
+function chjava() {
+  version=$1
+  echo "Change java version to ${version}"
+  export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "${version}"`
+}
 
 # リポジトリ上にある実行ファイル
 if [ -d $HOME/.bin ]; then
@@ -42,7 +50,7 @@ if [ -f $HOME/.rbenv/bin/rbenv ]; then
 fi
 
 # nodebrew
-if [ -f $HOME/.nodebrew/current/bin/node ]; then
+if [ -f $HOME/.nodebrew/current/bin/nodebrew ]; then
   path=($HOME/.nodebrew/current/bin $path)
 fi
 
