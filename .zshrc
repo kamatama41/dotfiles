@@ -71,11 +71,12 @@ function refresh-setting(){
   source ~/.zshrc
 }
 
-# office設定(あれば)
-if [ -f $HOME/.zshrc_office ]; then
-  source $HOME/.zshrc_office
-fi
-# zgen設定(あれば)
-if [ -f $HOME/.zshrc.zgen ]; then
-  source $HOME/.zshrc.zgen
-fi
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/shinichi/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/shinichi/google-cloud-sdk/completion.zsh.inc'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/shinichi/.sdkman"
+[[ -s "/Users/shinichi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shinichi/.sdkman/bin/sdkman-init.sh"

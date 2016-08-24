@@ -81,8 +81,8 @@ set cindent
 
 " ノーマルモード時だけ ; と : を入れ替える
 " refs: http://msrx9.bitbucket.org/blog/html/2013/06/29/vim_nnoremap.html
-nnoremap ; :
-nnoremap : ;
+" nnoremap ; :
+" nnoremap : ;
 
 "---------------------------------------------------------
 " ファイル関連

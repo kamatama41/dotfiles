@@ -26,9 +26,19 @@ if [ -f $HOME/maven2/current/bin/mvn ]; then
 fi
 
 # golang
-if command -v go > /dev/null; then
+if [ -f /usr/local/go/bin/go ]; then
   export GOPATH=$HOME/go
-  path=($GOPATH/bin(N-/) $(go env GOROOT)/bin(N-/) $path)
+  path=($GOPATH/bin(N-/) $(/usr/local/go/bin/go env GOROOT)/bin(N-/) $path)
+fi
+
+# office設定(あれば)
+if [ -f $HOME/.zshrc_office ]; then
+  source $HOME/.zshrc_office
+fi
+
+# zgen設定(あれば)
+if [ -f $HOME/.zshrc.zgen ]; then
+  source $HOME/.zshrc.zgen
 fi
 
 # node.js
