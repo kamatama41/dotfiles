@@ -60,7 +60,7 @@ bindkey '^r' peco-select-history
 #zle -N peco-tmux
 #bindkey '^[' peco-tmux
 
-# 設定のリフレッシュ
+# Refresh zshrc
 function refresh-setting(){
   # git pull
   current=$PWD
@@ -69,6 +69,11 @@ function refresh-setting(){
   git pull
   cd $current
   source ~/.zshrc
+}
+
+# Delete merged branches
+function git_delete-merged-branches(){
+  git branch --merged | grep -v '*' | xargs -I % git branch -d %
 }
 
 # The next line updates PATH for the Google Cloud SDK.
