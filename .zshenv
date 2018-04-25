@@ -1,5 +1,6 @@
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
+export GPG_TTY=$(tty)
 bindkey -e
 
 # Java(default 1.7)
