@@ -17,8 +17,6 @@ compinit
 compdef mosh=ssh
 
 # vcs_info in right prompt
-
-
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
