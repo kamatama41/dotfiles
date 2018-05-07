@@ -4,19 +4,21 @@ alias tmux='tmux -2'
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
-# シェルのプロセスごとに履歴を共有
+# Share histories in each shell process
 setopt share_history
-# ヒストリにhistoryコマンドを記録しない
+# Not record "history" command to history
 setopt hist_no_store
-# 同じ履歴は残さない
+# Ignore duplicate command
 setopt hist_ignore_all_dups
-# 補完
+# Completion settings
 autoload -Uz compinit
 compinit
-# sshと同じ補完をする
+# mosh has the same comp definition as ssh
 compdef mosh=ssh
 
-# vcs_infoを右プロンプトに
+# vcs_info in right prompt
+
+
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%b)'
@@ -31,7 +33,7 @@ add-zsh-hook precmd _update_vcs_info_message
 RPROMPT="[%c]%v"
 
 ## peco
-# ヒストリから検索する
+# Search via history
 function peco-select-history() {
   local tac
   if which tac > /dev/null; then
@@ -48,7 +50,7 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-# tmuxのウインドウ切り替え
+# Window switching for tmux
 #function peco-tmux() {
 #  local i=$(tmux lsw | awk '/active.$/ {print NR-1}')
 #  local f='#{window_index}: #{window_name}#{window_flags} #{pane_current_path}'
@@ -76,12 +78,12 @@ function git_delete-merged-branches(){
   git branch --merged | grep -v '*' | xargs -I % git branch -d %
 }
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/shinichi/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/shinichi/google-cloud-sdk/completion.zsh.inc'
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/shinichi/.sdkman"
 [[ -s "/Users/shinichi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/shinichi/.sdkman/bin/sdkman-init.sh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ishimura/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/ishimura/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ishimura/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/ishimura/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
