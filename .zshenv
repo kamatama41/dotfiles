@@ -53,8 +53,3 @@ if [ -f $HOME/.embulk/bin/embulk ]; then
   path=($HOME/.embulk/bin $path)
 fi
 
-# GraalVM
-if [ -f $HOME/.graalvm/Contents/Home/bin/gu ]; then
-  path=($HOME/.graalvm/Contents/Home/bin $path)
-fi
-
