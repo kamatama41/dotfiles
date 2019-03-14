@@ -53,3 +53,8 @@ if [ -f $HOME/.embulk/bin/embulk ]; then
   path=($HOME/.embulk/bin $path)
 fi
 
+# homebrew
+if [ -f /opt/homebrew/bin/brew ]; then
+  path=(/opt/homebrew/bin $path)
+fi
+
