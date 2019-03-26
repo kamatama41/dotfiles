@@ -28,7 +28,9 @@ function _update_vcs_info_message() {
   psvar[1]="$vcs_info_msg_0_"
 }
 add-zsh-hook precmd _update_vcs_info_message
-RPROMPT="[%c]%v"
+# https://github.com/wesbos/Cobalt2-iterm/issues/15 + add VCS branch name 
+PROMPT="%$(( $COLUMNS - 61 ))<..<%~%v%<<$ "
+#RPROMPT="[%c]%v"
 
 ## peco
 # Search via history
