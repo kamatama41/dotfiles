@@ -78,6 +78,12 @@ function git_delete-merged-branches(){
   git branch --merged | grep -v '*' | xargs -I % git branch -d %
 }
 
+# rbenv
+if [ -f $HOME/.rbenv/bin/rbenv ]; then
+  path=($HOME/.rbenv/bin $path)
+  eval "$(rbenv init -)"
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
