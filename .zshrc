@@ -84,6 +84,11 @@ if [ -f $HOME/.rbenv/bin/rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
+# pyenv (via homebrew)
+if [ -f /opt/homebrew/bin/pyenv ]; then
+  eval "$(pyenv init -)"
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
