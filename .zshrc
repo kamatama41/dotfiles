@@ -87,6 +87,7 @@ fi
 # pyenv (via homebrew)
 if [ -f /opt/homebrew/bin/pyenv ]; then
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
