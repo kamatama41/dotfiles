@@ -73,6 +73,14 @@ function refresh-setting(){
   source ~/.zshrc
 }
 
+# GO
+function setGOROOT(){
+  v=${1}
+  echo "Set GOROOT to ${v}"
+  export GOROOT=$(go${v} env GOROOT)
+  path=(${GOROOT}/bin(N-/) $path)
+}
+
 # Delete merged branches
 function git_delete-merged-branches(){
   git branch --merged | grep -v '*' | xargs -I % git branch -d %
