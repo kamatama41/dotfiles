@@ -15,10 +15,6 @@ if [ -f /usr/local/go/bin/go ]; then
   path=($GOPATH/bin(N-/) $(/usr/local/go/bin/go env GOROOT)/bin(N-/) $path)
 fi
 
-# .rc for office (if exists) 
-if [ -f $HOME/.zshrc_office ]; then
-  source $HOME/.zshrc_office
-fi
 
 # .zgen (if exists)
 if [ -f $HOME/.zshrc.zgen ]; then

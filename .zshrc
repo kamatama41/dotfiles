@@ -107,6 +107,11 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then source "$H
 export NVM_DIR="/Users/ishimura/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# .rc for office (if exists) 
+if [ -f $HOME/.zshrc_office ]; then
+  source $HOME/.zshrc_office
+fi
+
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
 
