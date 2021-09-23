@@ -55,12 +55,12 @@ if [ -f $HOME/.digdag/bin/digdag ]; then
 fi
 
 # homebrew
-if [ -f /opt/homebrew/bin/brew ]; then
-  path=(/opt/homebrew/bin $path)
+if [ -f $HOME/.homebrew/bin/brew ]; then
+  path=($HOME/.homebrew/bin $path)
 fi
 
 # PostgreSQL (via homebrew)
-if [ -f /opt/homebrew/opt/postgresql@9.6/bin/psql ]; then
-  path=(/opt/homebrew/opt/postgresql@9.6/bin $path)
+if [ -f $HOME/.homebrew/opt/postgresql@9.6/bin/psql ]; then
+  path=($HOME/.homebrew/opt/postgresql@9.6/bin $path)
 fi
 

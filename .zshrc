@@ -93,9 +93,10 @@ if [ -f $HOME/.rbenv/bin/rbenv ]; then
 fi
 
 # pyenv (via homebrew)
-if [ -f /opt/homebrew/bin/pyenv ]; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+if [ -f $HOME/.homebrew/bin/pyenv ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
