@@ -107,6 +107,12 @@ if [ -f $HOME/.zshrc_office ]; then
   source $HOME/.zshrc_office
 fi
 
+# OpenSSL (via homebrew)
+if [ -f $HOME/.homebrew/opt/openssl@3/bin/openssl ]; then
+  #path=($HOME/.homebrew/opt/openssl@3/bin $path)
+  export PATH=$HOME/.homebrew/opt/openssl@3/bin:$PATH
+fi
+
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
 
