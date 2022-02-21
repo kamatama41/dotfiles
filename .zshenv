@@ -17,9 +17,9 @@ fi
 
 
 # .zgen (if exists)
-if [ -f $HOME/.zshrc.zgen ]; then
-  source $HOME/.zshrc.zgen
-fi
+#if [ -f $HOME/.zshrc.zgen ]; then
+#  source $HOME/.zshrc.zgen
+#fi
 
 # node.js
 if [ -s $HOME/.nvm/nvm.sh  ]; then
