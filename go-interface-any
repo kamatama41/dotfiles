@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+if [ $# != 1 ]; then
+    echo "file path must be set" 1>&2
+    exit 1
+fi
+
+set -eu
+path=$1
+sed -i.bak 's/interface{}/any/g' $path
+rm -f ${path}.bak
