@@ -58,6 +58,9 @@ fi
 if [ -f $HOME/.homebrew/bin/brew ]; then
   path=($HOME/.homebrew/bin $path)
 fi
+if [ -f /opt/homebrew/bin/brew ]; then
+  path=(/opt/homebrew/bin $path)
+fi
 
 # PostgreSQL (via homebrew)
 if [ -f $HOME/.homebrew/opt/postgresql@9.6/bin/psql ]; then
