@@ -98,6 +98,11 @@ if [ -f $HOME/.homebrew/bin/pyenv ]; then
   eval "$(pyenv init --path)"
 fi
 
+# fnm (via homebrew)
+if [ -f /opt/homebrew/bin/fnm ]; then
+  eval "$(fnm env --use-on-cd)"
+fi
+
 export NVM_DIR="/Users/ishimura/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
