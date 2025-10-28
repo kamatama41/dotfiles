@@ -87,7 +87,7 @@ function git_delete-merged-branches(){
 }
 
 # rbenv
-if [ -f $HOME/.homebrew/bin/rbenv ]; then
+if [ -f /opt/homebrew/bin/rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
