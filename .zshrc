@@ -103,8 +103,9 @@ if [ -f /opt/homebrew/bin/fnm ]; then
   eval "$(fnm env --use-on-cd)"
 fi
 
-export NVM_DIR="/Users/ishimura/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # .rc for office (if exists) 
 if [ -f $HOME/.zshrc_office ]; then
@@ -132,3 +133,4 @@ if [ -f '/Users/sishimura/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sishi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/sishimura/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sishimura/google-cloud-sdk/completion.zsh.inc'; fi
+
