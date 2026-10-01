@@ -16,22 +16,6 @@ compinit
 # mosh has the same comp definition as ssh
 compdef mosh=ssh
 
-# vcs_info in right prompt
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%b)'
-zstyle ':vcs_info:*' actionformats '(%b|%a)'
-
-function _update_vcs_info_message() {
-  psvar=()
-  LANG=en_US.UTF-8 vcs_info
-  psvar[1]="$vcs_info_msg_0_"
-}
-add-zsh-hook precmd _update_vcs_info_message
-# https://github.com/wesbos/Cobalt2-iterm/issues/15 + add VCS branch name 
-PROMPT="%$(( $COLUMNS - 100 ))<..<%~%v%<<$ "
-#RPROMPT="[%c]%v"
-
 ## peco
 # Search via history
 function peco-select-history() {
@@ -134,3 +118,45 @@ if [ -f '/Users/sishimura/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sishi
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/sishimura/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sishimura/google-cloud-sdk/completion.zsh.inc'; fi
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/sishimura/.docker/completions $fpath)
+autoload -Uz compinit
+(( ${+_comps[docker]} )) || compinit
+# End of Docker CLI completions
+export PATH="$HOME/.local/bin:$PATH"
+
+# ---------------------------------------------------------------
+# Modern CLI tools (インストールされているものだけ有効化)
+#   brew install fzf fd ripgrep zoxide eza bat lazygit starship git-delta
+# ---------------------------------------------------------------
+export EDITOR=nvim
+export VISUAL=nvim
+
+# starship: プロンプト (設定: ~/.config/starship.toml)
+(( $+commands[starship] )) && eval "$(starship init zsh)"
+
+# zoxide: `z <名前の一部>` でジャンプ, `zi` で fzf 選択
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+
+# fzf: Ctrl-R 履歴 (peco版を置き換え) / Ctrl-T ファイル / Alt-C cd
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+  if (( $+commands[fd] )); then
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git'
+  fi
+  export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+  (( $+commands[bat] )) && export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range=:200 {}'"
+fi
+
+if (( $+commands[eza] )); then
+  alias ls='eza --icons --git'
+  alias ll='eza -l --icons --git'
+  alias la='eza -la --icons --git'
+  alias lt='eza --tree --level=2 --icons'
+fi
+(( $+commands[bat] )) && alias cat='bat --paging=never --style=plain'
+(( $+commands[lazygit] )) && alias lg='lazygit'
+alias vi='nvim'
+alias vim='nvim'
