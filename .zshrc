@@ -109,6 +109,9 @@ export VISUAL=nvim
 # zoxide: `z <名前の一部>` でジャンプ, `zi` で fzf 選択
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
+# direnv: ディレクトリごとの .envrc を自動で読み込み
+(( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+
 # fzf: Ctrl-R 履歴 / Ctrl-T ファイル / Alt-C cd
 if (( $+commands[fzf] )); then
   source <(fzf --zsh)
