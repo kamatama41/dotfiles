@@ -16,36 +16,6 @@ compinit
 # mosh has the same comp definition as ssh
 compdef mosh=ssh
 
-## peco
-# Search via history
-function peco-select-history() {
-  local tac
-  if which tac > /dev/null; then
-    tac="tac"
-  else
-    tac="tail -r"
-  fi
-    BUFFER=$(history -n 1 | \
-      eval $tac | \
-      peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
-
-# Window switching for tmux
-#function peco-tmux() {
-#  local i=$(tmux lsw | awk '/active.$/ {print NR-1}')
-#  local f='#{window_index}: #{window_name}#{window_flags} #{pane_current_path}'
-#  tmux lsw -F "$f" \
-#    | anyframe-selector-auto "" --initial-index $i \
-#    | cut -d ':' -f 1 \
-#    | anyframe-action-execute tmux select-window -t
-#}
-#zle -N peco-tmux
-#bindkey '^[' peco-tmux
-
 # Refresh zshrc
 function refresh-setting(){
   # git pull
@@ -138,7 +108,7 @@ export VISUAL=nvim
 # zoxide: `z <名前の一部>` でジャンプ, `zi` で fzf 選択
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
-# fzf: Ctrl-R 履歴 (peco版を置き換え) / Ctrl-T ファイル / Alt-C cd
+# fzf: Ctrl-R 履歴 / Ctrl-T ファイル / Alt-C cd
 if (( $+commands[fzf] )); then
   source <(fzf --zsh)
   if (( $+commands[fd] )); then
