@@ -34,6 +34,7 @@ function setGOROOT(){
   export GOROOT=$(go${v} env GOROOT)
   path=(${GOROOT}/bin(N-/) $path)
 }
+export PATH="$HOME/go/bin:$PATH"
 
 # Delete merged branches
 function git_delete-merged-branches(){
