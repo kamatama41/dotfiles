@@ -1,0 +1,17 @@
+# lazygit config (v0.65+)
+# `|` キーで diff の表示方法を切り替え
+git:
+  diffRenderers:
+    # 通常: delta (縦並び)。gitconfig の side-by-side を無視するため --no-gitconfig
+    - name: delta
+      command: delta --no-gitconfig --dark --paging=never --line-numbers --syntax-theme="Catppuccin Mocha"
+    # 横並び: 画面が広いとき用 (+ で diff パネルを最大化すると見やすい)
+    - name: delta side-by-side
+      command: delta --no-gitconfig --dark --paging=never --side-by-side --line-numbers --syntax-theme="Catppuccin Mocha"
+    # 単語単位の差分 (git 標準)
+    - type: rawGit
+      name: color-words
+      args: [--color-words]
+
+os:
+  editPreset: nvim
